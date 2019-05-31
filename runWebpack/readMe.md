@@ -32,3 +32,6 @@
 ```一般解决方案是：根据需求降低首次加载文件的体积，在需要是，如前端路由切换，交互事件回调，异步加载其他文件并使用其中的模块```
 
 #### ES import() 规范来异步加载模块
+
+### 流程图
+![avator](https://github.com/luoluoying/webpack/blob/master/runWebpack/img/async_webpack_run.jpg)
