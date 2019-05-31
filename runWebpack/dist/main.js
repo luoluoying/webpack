@@ -1,41 +1,4 @@
- (function(modules) {  	 	function webpackJsonpCallback(data) {
- 		var chunkIds = data[0];
- 		var moreModules = data[1];
-
-
- 		 		 		var moduleId, chunkId, i = 0, resolves = [];
- 		for(;i < chunkIds.length; i++) {
- 			chunkId = chunkIds[i];
- 			if(installedChunks[chunkId]) {
- 				resolves.push(installedChunks[chunkId][0]);
- 			}
- 			installedChunks[chunkId] = 0;
- 		}
- 		for(moduleId in moreModules) {
- 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
- 				modules[moduleId] = moreModules[moduleId];
- 			}
- 		}
- 		if(parentJsonpFunction) parentJsonpFunction(data);
-
- 		while(resolves.length) {
- 			resolves.shift()();
- 		}
-
- 	};
-
-
- 	 	var installedModules = {};
-
- 	 	 	 	var installedChunks = {
- 		"main": 0
- 	};
-
-
-
- 	 	function jsonpScriptSrc(chunkId) {
- 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
- 	}
+ (function(modules) {  	 	var installedModules = {};
 
  	 	function __webpack_require__(moduleId) {
 
@@ -55,56 +18,6 @@
  		 		return module.exports;
  	}
 
- 	 	 	__webpack_require__.e = function requireEnsure(chunkId) {
- 		var promises = [];
-
-
- 		
- 		var installedChunkData = installedChunks[chunkId];
- 		if(installedChunkData !== 0) { 
- 			 			if(installedChunkData) {
- 				promises.push(installedChunkData[2]);
- 			} else {
- 				 				var promise = new Promise(function(resolve, reject) {
- 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
- 				});
- 				promises.push(installedChunkData[2] = promise);
-
- 				 				var script = document.createElement('script');
- 				var onScriptComplete;
-
- 				script.charset = 'utf-8';
- 				script.timeout = 120;
- 				if (__webpack_require__.nc) {
- 					script.setAttribute("nonce", __webpack_require__.nc);
- 				}
- 				script.src = jsonpScriptSrc(chunkId);
-
- 				onScriptComplete = function (event) {
- 					 					script.onerror = script.onload = null;
- 					clearTimeout(timeout);
- 					var chunk = installedChunks[chunkId];
- 					if(chunk !== 0) {
- 						if(chunk) {
- 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
- 							var realSrc = event && event.target && event.target.src;
- 							var error = new Error('Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')');
- 							error.type = errorType;
- 							error.request = realSrc;
- 							chunk[1](error);
- 						}
- 						installedChunks[chunkId] = undefined;
- 					}
- 				};
- 				var timeout = setTimeout(function(){
- 					onScriptComplete({ type: 'timeout', target: script });
- 				}, 120000);
- 				script.onerror = script.onload = onScriptComplete;
- 				document.head.appendChild(script);
- 			}
- 		}
- 		return Promise.all(promises);
- 	};
 
  	 	__webpack_require__.m = modules;
 
@@ -144,16 +57,7 @@
 
  	 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 
- 	 	__webpack_require__.p = "/dist/";
-
- 	 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
-
- 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
- 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
- 	jsonpArray.push = webpackJsonpCallback;
- 	jsonpArray = jsonpArray.slice();
- 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
- 	var parentJsonpFunction = oldJsonpFunction;
+ 	 	__webpack_require__.p = "";
 
 
  	 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
@@ -164,7 +68,15 @@
  "./src/index.js":
 
 
- (function(module, exports, __webpack_require__) {
+ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils_math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( "./src/utils/math.js");
+
+
+console.log('hello world')
+console.log('1 + 2: ', Object(_utils_math__WEBPACK_IMPORTED_MODULE_0__["plus"])(1, 2))
 
 
 
@@ -173,12 +85,20 @@
 
 
 
-console.log('hello webpack')
-window.setTimeout(() => {
-  __webpack_require__.e( 0).then(__webpack_require__.bind(null,  "./src/utils/math.js")).then(mathUtil => {
-    console.log('1 + 2: ', mathUtil.plus(1, 2))
-  })
-}, 2000)
+
+ }),
+
+ "./src/utils/math.js":
+
+
+ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "plus", function() { return plus; });
+const plus = (a, b) => {
+  return a + b;
+}
 
  })
 
