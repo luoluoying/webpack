@@ -1,3 +1,3 @@
 #### webpack 运行
 
-![avatar]()
+![avatar](https://github.com/luoluoying/webpack/blob/master/runWebpack/img/webpack_run.png)
